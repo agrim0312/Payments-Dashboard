@@ -23,7 +23,7 @@ export default function RootLayout({
         <body className={inter.className}>
           <AppbarClient/>
           <Sidebar>
-          {children}
+            {children}
           </Sidebar>
         </body>
       </Providers>

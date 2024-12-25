@@ -15,6 +15,8 @@ model User {
   password    String
   onRamping   onRamping[]
   Balance     Balance[]
+  sentTransfers P2PTransfers[]    @relation(name: "FromUserRelation")
+  recievedTransfers P2PTransfers[] @relation(name: "ToUserRelation")
 }
 
 model Merchant {
@@ -35,11 +37,21 @@ model onRamping {
   user      User         @relation(fields: [userId], references: [id])
 }
 
+model P2PTransfers {
+  id              Int       @id @default(autoincrement())
+  timestamp       DateTime?
+  sentUserId      Int
+  recievedUserId  Int
+  sentUser        User      @relation(name:"FromUserRelation",fields: [sentUserId],references: [id])
+  recievedUser    User      @relation(name:"ToUserRelation",fields: [recievedUserId],references: [id])
+}
+
 model Balance {
   id     Int  @id @default(autoincrement())
   userId Int  @unique
   amount Int
   locked Int
+  timestamp DateTime?
   user   User @relation(fields: [userId], references: [id])
 }
 

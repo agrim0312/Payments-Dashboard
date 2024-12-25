@@ -1,13 +1,16 @@
 import { PrismaClient } from '@prisma/client'
+import bcrypt from "bcrypt";
 const prisma = new PrismaClient()
 
 async function main() {
   const alice = await prisma.user.upsert({
     where: { number: '9999999999' },
-    update: {},
+    update: {
+      password: await bcrypt.hash('alice',10),
+    },
     create: {
       number: '9999999999',
-      password: 'alice',
+      password: await bcrypt.hash('alice',10),
       name: 'alice',
       onRamping: {
         create: {
@@ -22,10 +25,12 @@ async function main() {
   })
   const bob = await prisma.user.upsert({
     where: { number: '9999999998' },
-    update: {},
+    update: {
+      password: await bcrypt.hash('bob',10)
+    },
     create: {
       number: '9999999998',
-      password: 'bob',
+      password: await bcrypt.hash('bob',10),
       name: 'bob',
       onRamping: {
         create: {

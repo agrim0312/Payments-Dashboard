@@ -3,13 +3,15 @@ import React from "react";
 export function Card({
   title,
   children,
+  className
 }: {
-  title: string;
+  title?: string;
   children?: React.ReactNode;
+  className?:string;
 }): JSX.Element {
   return (
     <div
-      className="border p-4"
+      className={className?className:"border p-4"}
     >
       <h1 className="text-xl border-b pb-2">
         {title}
