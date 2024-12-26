@@ -22,7 +22,7 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         context: .
-        file: ./docker/Dockerfile
+        file: docker/DockerFile.user
         push: true
         tags: agrim0312/payments-dashboard-user:latest  
 

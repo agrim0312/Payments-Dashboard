@@ -3,8 +3,6 @@ import Dashboard from "../../components/DashboardPage";
 import { authOptions } from "../../lib/auth";
 import prisma from "@repo/db/client";
 
-
-
 const getUser = async ()=>{
     const session = await getServerSession(authOptions);
     const userId = session.user.id;
