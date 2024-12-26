@@ -13,7 +13,7 @@ const mockChartData = [
   { date: '23 MAR', value: 158793 }
 ];
 
-const timeFrames = ['1W', '1M', '3M', '6M', '1Y', 'ALL'];
+const timeFrames = ['1W', '1M', '4M', '6M', '1Y', 'ALL'];
 
 const Dashboard = ({ user }: {
     user : {
