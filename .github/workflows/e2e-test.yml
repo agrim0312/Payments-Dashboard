@@ -1,4 +1,4 @@
-name: Webhook Integration Test Pipeline
+name: User APP End to End Test Pipeline
 
 on:
   push:
@@ -26,4 +26,4 @@ jobs:
       run: docker compose version
 
     - name: Run integration script
-      run: npm run test:integration
+      run: npm run test:end-2-end
