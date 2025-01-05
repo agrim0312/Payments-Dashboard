@@ -7,6 +7,9 @@ PROJECT_ROOT=$(pwd)
 echo "Starting Docker containers..."
 docker compose up -d
 
+echo '🟡 - Waiting for database to be ready...'
+scripts/wait-for-it.sh "postgresql://postgres:mysecretpassword@localhost:5433/postgres" -- echo '🟢 - Database is ready!'
+
 # Run database migrations and seeding
 echo "Setting up database..."
 cd packages/db
